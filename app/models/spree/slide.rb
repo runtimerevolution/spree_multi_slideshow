@@ -35,11 +35,12 @@ module Spree
     include Spree::Core::S3Support
     supports_s3 :attachment
 
-    Spree::Slide.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:attachment_styles])
-    Spree::Slide.attachment_definitions[:attachment][:path] = Spree::Config[:attachment_path]
-    Spree::Slide.attachment_definitions[:attachment][:url] = Spree::Config[:attachment_url]
-    Spree::Slide.attachment_definitions[:attachment][:default_url] = Spree::Config[:attachment_default_url]
-    Spree::Slide.attachment_definitions[:attachment][:default_style] = Spree::Config[:attachment_default_style]
+#    Commented next lines because if S3 is enabled the following would use the products configuration instead   
+#    Spree::Slide.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:attachment_styles])
+#    Spree::Slide.attachment_definitions[:attachment][:path] = Spree::Config[:attachment_path]
+#    Spree::Slide.attachment_definitions[:attachment][:url] = Spree::Config[:attachment_url]
+#    Spree::Slide.attachment_definitions[:attachment][:default_url] = Spree::Config[:attachment_default_url]
+#    Spree::Slide.attachment_definitions[:attachment][:default_style] = Spree::Config[:attachment_default_style]
     
     def initialize(*args)
       super(*args)
