@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class SlidesController < ResourceController
-      before_filter :load_data, :only => [:index, :new, :show, :edit]
+      before_filter :load_data, :only => [:index, :new, :show, :edit, :create, :update]
       
       def update_positions
         params[:positions].each do |id, index|
@@ -20,7 +20,8 @@ module Spree
       end
       
       def load_data
-        @slideshow_type = Spree::SlideshowType.find(params[:slideshow_type_id].to_i)
+        params_hash = params[:slide] ? params[:slide] : params       
+        @slideshow_type = Spree::SlideshowType.find(params_hash[:slideshow_type_id].to_i)
       end
 
     end
