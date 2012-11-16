@@ -4,11 +4,11 @@ module Spree
     
     validate :no_attachment_errors
     validates_presence_of :slideshow_type_id
-    validates_attachment_presence :attachment
+    validates_attachment_presence :attachment, :unless => :has_html_content?
     validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => "deve essere JPG, JPEG, PNG o GIF"
     
     attr_accessor :attachment_width, :attachment_height
-    attr_accessible :title, :url, :attachment_width, :attachment_height, :content, :slideshow_type_id, :attachment
+    attr_accessible :title, :url, :attachment_width, :attachment_height, :content, :slideshow_type_id, :attachment, :html_content
     
     has_attached_file :attachment,
             :url  => "/spree/slides/:id/:style_:basename.:extension",
@@ -65,6 +65,10 @@ module Spree
         errors.add :attachment, "Paperclip returned errors for file '#{attachment_file_name}' - check ImageMagick installation or image source file."
         false
       end
+    end
+
+    def has_html_content?
+       !html_content.blank?
     end
   end
 end

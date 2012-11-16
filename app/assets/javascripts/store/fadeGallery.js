@@ -7,6 +7,7 @@ jQuery(function($) {
 function initGalleries(){
 	// main banner slideshow
 	jQuery('div.gallery').fadeGallery({
+		pauseOnHover: true,
 		autoRotation: true,
 		switchTime: 5000, //ms
 		duration: 800 //ms

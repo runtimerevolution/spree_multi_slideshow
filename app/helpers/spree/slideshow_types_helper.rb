@@ -23,7 +23,11 @@ module Spree
           else
             link_content = ""
           end
-          content_tag(:li, raw(link_to(image_tag(slide.attachment.url(style.to_sym)), slide.url, { :title => slide.title })) + raw(link_content))
+          if slide.html_content.blank?
+            content_tag(:li, raw(link_to(image_tag(slide.attachment.url(style.to_sym)), slide.url, { :title => slide.title })) + raw(link_content))
+          else
+            content_tag(:li, raw(slide.html_content))
+          end
         end.join
       else
         false

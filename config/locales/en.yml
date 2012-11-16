@@ -89,6 +89,7 @@ en:
       title: Title
       position: Position
       content: Description
+      html_content: HTML Content
       url: Link to product or taxonomy or to external website
       editing_page: Editing slide
     editing_page: Editing slideshow
