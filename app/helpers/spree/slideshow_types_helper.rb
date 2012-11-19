@@ -47,8 +47,13 @@ module Spree
         end
         
         res = Hash.new()
-        res[:prev] = content_tag(:div, prev, :class => "carousel-control left")
-        res[:succ] = content_tag(:div, succ, :class => "carousel-control right")
+        if slideshow.first.enable_navigation
+          res[:prev] = content_tag(:div, prev, :class => "carousel-control left")
+          res[:succ] = content_tag(:div, succ, :class => "carousel-control right")
+        else
+          res[:prev] = content_tag(:div, prev, :class => "")
+          res[:succ] = content_tag(:div, succ, :class => "")
+        end
         return res
       end
     end
