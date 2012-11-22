@@ -19,6 +19,10 @@ module SpreeMultiSlideshow
       end
     end
 
+    initializer :assets do |config|
+      Rails.application.config.assets.precompile += %w( admin/slides/index.js admin/slides/new.js )
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end
