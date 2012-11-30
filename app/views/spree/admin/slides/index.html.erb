@@ -16,7 +16,7 @@
 	</tr>
 
 	<% Spree::Slide.where("slideshow_type_id = ?", @slideshow_type.id).order("position ASC").each do |slide| %>
-	<tr id="<%= dom_id(slide) %>" data-hook="images_row">
+	<tr id="<%= dom_id(slide, 'spree') %>" data-hook="images_row">
 		<td>
 			<span class="handle"></span>
 			<%= !slide.has_html_content? ? link_to(image_tag(slide.attachment.url(:thumbnail)), slide.attachment.url(:medium)) : t("slideshow_type.slide.html_content") %>
