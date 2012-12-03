@@ -15,7 +15,7 @@ module Spree
       slideshow = Spree::SlideshowType.enable(category)
       if !slideshow.blank?
         max = slideshow.first.slide_number || 4
-        slides = Spree::Slide.where("slideshow_type_id = ?", slideshow.first.id).limit(max).sort_by { |slide| slide.position }
+        slides = slideshow.first.slides.order(:position).limit(max)
 
         slides.map do |slide|
           if params[:enable_content]
